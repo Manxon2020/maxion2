@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Microsoft Paint</title>
+  <link rel="stylesheet" href="./paint.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="titlebar">
+      <div class="title-left">
+        <span class="app-icon" aria-hidden="true"></span>
+        <strong>Microsoft Paint</strong>
+      </div>
+      <div class="window-actions" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <section class="ribbon" aria-label="Paint tools">
+      <div class="tool-group">
+        <button class="tool active" type="button" data-tool="pencil" title="Pencil" aria-label="Pencil">
+          <span class="ico pencil"></span>
+        </button>
+        <button class="tool" type="button" data-tool="eraser" title="Eraser" aria-label="Eraser">
+          <span class="ico eraser"></span>
+        </button>
+        <button class="tool" type="button" data-tool="fill" title="Fill" aria-label="Fill">
+          <span class="ico fill"></span>
+        </button>
+        <button class="tool" type="button" data-tool="text" title="Text" aria-label="Text">
+          <span class="ico text"></span>
+        </button>
+      </div>
+
+      <div class="tool-group">
+        <button class="tool" type="button" data-tool="line" title="Line" aria-label="Line">
+          <span class="ico line"></span>
+        </button>
+        <button class="tool" type="button" data-tool="rect" title="Rectangle" aria-label="Rectangle">
+          <span class="ico rect"></span>
+        </button>
+        <button class="tool" type="button" data-tool="circle" title="Ellipse" aria-label="Ellipse">
+          <span class="ico circle"></span>
+        </button>
+      </div>
+
+      <div class="tool-group wide">
+        <label for="brushSize">Size</label>
+        <input id="brushSize" type="range" min="1" max="36" value="6">
+        <span id="sizeReadout">6 px</span>
+      </div>
+
+      <div class="tool-group colors" aria-label="Colors">
+        <input id="colorPicker" type="color" value="#111827" aria-label="Custom color">
+        <div class="swatches" id="swatches"></div>
+      </div>
+
+      <div class="tool-group">
+        <button id="undoBtn" class="command" type="button" title="Undo" aria-label="Undo">Undo</button>
+        <button id="redoBtn" class="command" type="button" title="Redo" aria-label="Redo">Redo</button>
+      </div>
+
+      <div class="tool-group">
+        <button id="clearBtn" class="command" type="button">Clear</button>
+        <button id="saveBtn" class="command primary" type="button">Save PNG</button>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <canvas id="paintCanvas" width="1280" height="720" aria-label="Drawing canvas"></canvas>
+    </section>
+
+    <footer class="statusbar">
+      <span id="toolStatus">Pencil</span>
+      <span id="cursorStatus">1280 x 720 px</span>
+    </footer>
+  </main>
+
+  <script src="./paint.js"></script>
+</body>
+</html>
