@@ -1,0 +1,324 @@
+:root {
+  --chrome: #f4f7fb;
+  --chrome-dark: #d9e2ef;
+  --ink: #18202f;
+  --muted: #667085;
+  --accent: #2673d9;
+  --accent-dark: #1558b0;
+  --panel: #ffffff;
+  --border: #b9c6d7;
+  --shadow: 0 18px 48px rgba(20, 31, 48, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #dfe7f2;
+  overflow: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 38px auto 1fr 28px;
+  background: var(--chrome);
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  color: #0f172a;
+  background: linear-gradient(#fbfdff, #edf3fb);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+
+.title-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.app-icon {
+  width: 19px;
+  height: 19px;
+  display: inline-block;
+  border-radius: 5px;
+  background:
+    radial-gradient(circle at 66% 33%, #fff 0 8%, transparent 9%),
+    linear-gradient(135deg, #2b7de9 0 32%, #22a06b 33% 55%, #f59e0b 56% 75%, #ef4444 76%);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
+.window-actions {
+  display: flex;
+  height: 100%;
+}
+
+.window-actions span {
+  width: 44px;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ribbon {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  background: #eef4fb;
+  overflow-x: auto;
+}
+
+.tool-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 54px;
+  padding: 6px;
+  border: 1px solid #c9d5e5;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.tool-group.wide {
+  min-width: 205px;
+}
+
+.tool-group label,
+.tool-group span {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.tool,
+.command {
+  height: 36px;
+  min-width: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #aebcd0;
+  border-radius: 5px;
+  color: #1d2939;
+  background: linear-gradient(#ffffff, #e7eef8);
+  cursor: pointer;
+}
+
+.command {
+  padding: 0 12px;
+  font-weight: 600;
+}
+
+.tool:hover,
+.command:hover {
+  border-color: #7ea7dc;
+  background: linear-gradient(#ffffff, #dcecff);
+}
+
+.tool.active,
+.command.primary {
+  color: #fff;
+  border-color: var(--accent-dark);
+  background: linear-gradient(#3b8ef3, var(--accent));
+}
+
+.command:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.ico {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.pencil::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 9px;
+  width: 16px;
+  height: 5px;
+  border-radius: 2px;
+  background: #1f2937;
+  transform: rotate(-38deg);
+}
+
+.eraser::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 7px;
+  width: 16px;
+  height: 9px;
+  border: 2px solid #1f2937;
+  border-radius: 3px;
+  transform: rotate(-20deg);
+}
+
+.fill::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.fill::after {
+  content: "";
+  position: absolute;
+  right: 1px;
+  bottom: 2px;
+  width: 6px;
+  height: 8px;
+  border-radius: 0 0 5px 5px;
+  background: currentColor;
+}
+
+.text::before {
+  content: "T";
+  position: absolute;
+  inset: -3px 0 0;
+  color: currentColor;
+  font: 700 23px Georgia, serif;
+  text-align: center;
+}
+
+.line::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 9px;
+  width: 18px;
+  height: 3px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: rotate(-28deg);
+}
+
+.rect::before,
+.circle::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 2px solid currentColor;
+}
+
+.circle::before {
+  border-radius: 999px;
+}
+
+#brushSize {
+  width: 105px;
+  accent-color: var(--accent);
+}
+
+#colorPicker {
+  width: 38px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid #aebcd0;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(8, 20px);
+  gap: 4px;
+}
+
+.swatch {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.workspace {
+  min-height: 0;
+  padding: 18px;
+  background:
+    linear-gradient(45deg, #ccd7e6 25%, transparent 25%),
+    linear-gradient(-45deg, #ccd7e6 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccd7e6 75%),
+    linear-gradient(-45deg, transparent 75%, #ccd7e6 75%);
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  background-size: 20px 20px;
+  overflow: auto;
+}
+
+#paintCanvas {
+  display: block;
+  width: min(1280px, calc(100vw - 36px));
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  border: 1px solid #8fa1ba;
+  background: #fff;
+  box-shadow: var(--shadow);
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 12px;
+  border-top: 1px solid var(--border);
+  color: #475467;
+  background: #f8fbff;
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  body {
+    overflow: auto;
+  }
+
+  .app-shell {
+    min-height: 100svh;
+  }
+
+  .ribbon {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .tool-group {
+    min-height: 48px;
+  }
+
+  .window-actions {
+    display: none;
+  }
+}
