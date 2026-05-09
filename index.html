@@ -28,8 +28,14 @@
         <button class="tool" type="button" data-tool="eraser" title="Eraser" aria-label="Eraser">
           <span class="ico eraser"></span>
         </button>
+        <button class="tool" type="button" data-tool="spray" title="Spray" aria-label="Spray">
+          <span class="ico spray"></span>
+        </button>
         <button class="tool" type="button" data-tool="fill" title="Fill" aria-label="Fill">
           <span class="ico fill"></span>
+        </button>
+        <button class="tool" type="button" data-tool="picker" title="Color picker" aria-label="Color picker">
+          <span class="ico picker"></span>
         </button>
         <button class="tool" type="button" data-tool="text" title="Text" aria-label="Text">
           <span class="ico text"></span>
@@ -54,6 +60,19 @@
         <span id="sizeReadout">6 px</span>
       </div>
 
+      <div class="tool-group wide">
+        <label for="opacity">Opacity</label>
+        <input id="opacity" type="range" min="10" max="100" value="100">
+        <span id="opacityReadout">100%</span>
+      </div>
+
+      <div class="tool-group option-group">
+        <label class="check-option">
+          <input id="fillShape" type="checkbox">
+          <span>Fill shape</span>
+        </label>
+      </div>
+
       <div class="tool-group colors" aria-label="Colors">
         <input id="colorPicker" type="color" value="#111827" aria-label="Custom color">
         <div class="swatches" id="swatches"></div>
@@ -66,6 +85,9 @@
 
       <div class="tool-group">
         <button id="clearBtn" class="command" type="button">Clear</button>
+        <button id="resizeBtn" class="command" type="button">Resize</button>
+        <label class="command file-command" for="imageLoader">Import</label>
+        <input id="imageLoader" class="visually-hidden" type="file" accept="image/*">
         <button id="saveBtn" class="command primary" type="button">Save PNG</button>
       </div>
     </section>
